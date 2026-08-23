@@ -1,7 +1,7 @@
 """
 Telegram Bot for Trading Signals - HYBRID STRATEGY.
-UPDATED v3.3.0: Added Divergence, Candle Patterns, S/R, Session Filtering display
-Version: 3.3.0 - ENHANCED: New feature display in signal messages
+UPDATED v3.4.0: Added Divergence, Candle Patterns, S/R, Session Filtering display
+Version: 3.4.0 - ENHANCED: New feature display in signal messages
 """
 
 import logging
@@ -59,7 +59,6 @@ EMOJI = {
     "GRADE_A": "🏆",
     "GRADE_B": "🥈",
     "GRADE_C": "🥉",
-    # NEW v3.3.0
     "DIVERGENCE": "↩️",
     "PATTERN": "🕯️",
     "S_R": "📊",
@@ -69,7 +68,7 @@ EMOJI = {
 
 class TelegramBot:
     """
-    Telegram bot with v3.3.0 feature display.
+    Telegram bot with v3.4.0 feature display.
     """
 
     def __init__(self):
@@ -104,7 +103,7 @@ class TelegramBot:
         self._is_healthy = True
 
         if self.enabled:
-            logger.info(f"{EMOJI['SUCCESS']} TELEGRAM_BOT v3.3.0: Initialized with chat_id: {self.chat_id}")
+            logger.info(f"{EMOJI['SUCCESS']} TELEGRAM_BOT v3.4.0: Initialized with chat_id: {self.chat_id}")
             self._test_connection()
         else:
             logger.warning(f"{EMOJI['WARNING']} TELEGRAM_BOT: Disabled - No API token provided")
@@ -541,7 +540,7 @@ class TelegramBot:
             signal_emoji = EMOJI['BUY'] if signal_type == "BUY" else EMOJI['SELL']
 
             # Version badge
-            version_badge = "🤖 v3.3.0"
+            version_badge = "🤖 v3.4.0"
 
             message = f"""
 {signal_emoji} <b>{signal_type} SIGNAL</b> | <b>{symbol}</b> {grade_emoji} {version_badge}
@@ -694,7 +693,7 @@ class TelegramBot:
         if not self.enabled: return False
         try:
             message = f"""
-🚀 <b>Trading Bot Started</b> - Super TDI Strategy v3.3.0
+🚀 <b>Trading Bot Started</b> - Super TDI Strategy v3.4.0
 
 <b>Environment</b>: {config_info.get('environment', 'production')}
 <b>Symbols</b>: {len(symbols)}
@@ -704,7 +703,7 @@ class TelegramBot:
 <b>RRR Range</b>: {config_info.get('rrr_range', '1.5-4.0')}
 <b>Grade A</b>: 80+ | <b>Grade B</b>: 70-79 | <b>Grade C</b>: 60-69 (Rejected)
 
-<b>🆕 v3.3.0 Features:</b>
+<b>🆕 v3.4.0 Features:</b>
 • Divergence Detection: ✅
 • Candle Patterns: ✅
 • Support/Resistance: ✅
@@ -727,14 +726,14 @@ Bot is now monitoring...
             sr = stats.get('sr_signals', 0)
 
             message = f"""
-⚠️ <b>Trading Bot Stopped</b> - v3.3.0
+⚠️ <b>Trading Bot Stopped</b> - v3.4.0
 
 <b>Signals</b>: {stats.get('signals_generated', 0)} generated, {stats.get('sniper_signals', 0)} executed
 <b>PnL</b>: ${stats.get('total_pnl', 0):.2f} | <b>Avg RRR</b>: {stats.get('avg_rrr', 0):.1f}
 <b>Grades</b>: A={grade_a}, B={grade_b}, C={grade_c_rejected} (Rejected)
 <b>Score</b>: Approved={score_approved}, Rejected={score_rejected}
 
-<b>🆕 v3.3.0 Features:</b>
+<b>🆕 v3.4.0 Features:</b>
 • Divergence: {divergence}
 • Patterns: {patterns}
 • S/R: {sr}
